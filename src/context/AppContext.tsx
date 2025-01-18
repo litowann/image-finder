@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, FC, ReactNode } from "react";
+import { createContext, useState, useContext, ReactNode } from "react";
 
 interface AppState {
   name: string;
@@ -35,7 +35,9 @@ export const AppContext = createContext<AppContextProps>({
   reset: () => {}
 });
 
-export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
+type AppProviderProps = { children: ReactNode }
+
+export const AppProvider = ({ children }: AppProviderProps) => {
   const [name, setName] = useState(defaultState.name);
   const [surname, setSurname] = useState(defaultState.surname);
   const [topic, setTopic] = useState(defaultState.topic);
